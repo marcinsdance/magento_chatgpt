@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="ExpandingWeb\OpenAi\Api\Data\ExpandingWebOpenAiLogInterface"
+        type="ExpandingWeb\OpenAi\Model\ExpandingWebOpenAiLog" />
+    <preference for="ExpandingWeb\OpenAi\Api\ExpandingWebOpenAiLogRepositoryInterface"
+        type="ExpandingWeb\OpenAi\Model\ExpandingWebOpenAiLogRepository" />
+    <virtualType name="ExpandingWebOpenAiLogCollection"
+        type="ExpandingWeb\OpenAi\Model\ResourceModel\ExpandingWebOpenAiLog\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">expandingweb_openai_log</argument>
+            <argument name="resourceModel"
+                xsi:type="string">ExpandingWeb\OpenAi\Model\ResourceModel\ExpandingWebOpenAiLog</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="ExpandingWeb\OpenAi\Model\ResourceModel\ExpandingWebOpenAiLog\Grid\Collection"
+        type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">expandingweb_openai_log</argument>
+            <argument name="resourceModel"
+                xsi:type="string">ExpandingWeb\OpenAi\Model\ResourceModel\ExpandingWebOpenAiLog</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="expandingweb_openai_log_listing_data_source"
+                    xsi:type="string">ExpandingWeb\OpenAi\Model\ResourceModel\ExpandingWebOpenAiLog\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

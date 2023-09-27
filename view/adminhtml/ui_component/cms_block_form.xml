@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="general">
+        <fieldset name="container_create_description_with_ai">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">23</item>
+                    <item name="additionalClasses" xsi:type="string">a-center</item>
+                </item>
+            </argument>
+            <settings>
+                <label/>
+            </settings>
+            <button name="create_description_with_ai">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="buttonClasses" xsi:type="string">primary</item>
+                        <item name="actions" xsi:type="array">
+                            <item name="0" xsi:type="array">
+                                <item name="targetName" xsi:type="string">${ $.parentName }.modal_create_description_with_ai</item>
+                                <item name="actionName" xsi:type="string">openModal</item>
+                            </item>
+                        </item>
+                        <item name="sortOrder" xsi:type="number">10</item>
+                    </item>
+                </argument>
+                <settings>
+                    <displayAsLink>false</displayAsLink>
+                    <title translate="true">Create Content with AI</title>
+                </settings>
+            </button>
+            <modal name="modal_create_description_with_ai">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="sortOrder" xsi:type="number">20</item>
+                        <item name="onCancel" xsi:type="string">actionCancel</item>
+                        <item name="options" xsi:type="array">
+                            <item name="buttons" xsi:type="array">
+                                <item name="0" xsi:type="array">
+                                    <item name="text" xsi:type="string">Cancel</item>
+                                    <item name="class" xsi:type="string">action-secondary</item>
+                                    <item name="actions" xsi:type="array">
+                                        <item name="0" xsi:type="string">actionCancel</item>
+                                    </item>
+                                </item>
+                                <item name="1" xsi:type="array">
+                                    <item name="text" xsi:type="string">Generate new Content</item>
+                                    <item name="class" xsi:type="string">action-primary</item>
+                                    <item name="actions" xsi:type="array">
+                                        <item name="0" xsi:type="array">
+                                            <item name="targetName" xsi:type="string">${ $.name }.general.content_from_ai</item>
+                                            <item name="actionName" xsi:type="string">clear</item>
+                                        </item>
+                                        <item name="1" xsi:type="array">
+                                            <item name="targetName" xsi:type="string">${ $.name }.general.context</item>
+                                            <item name="actionName" xsi:type="string">renderWithKeywordsExtra</item>
+                                            <item name="params" xsi:type="array">
+                                                <item name="0" xsi:type="string">content_from_ai</item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                                <item name="2" xsi:type="array">
+                                    <item name="text" xsi:type="string">Use this content and save</item>
+                                    <item name="class" xsi:type="string">action-primary</item>
+                                    <item name="actions" xsi:type="array">
+                                        <item name="0" xsi:type="string">actionDone</item>
+                                        <item name="1" xsi:type="array">
+                                            <item name="targetName" xsi:type="string">cms_block_form.cms_block_form</item>
+                                            <item name="actionName" xsi:type="string">save</item>
+                                            <item name="params" xsi:type="array">
+                                                <item name="0" xsi:type="boolean">true</item>
+                                                <item name="1" xsi:type="array">
+                                                    <item name="back" xsi:type="string">continue</item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+                <fieldset name="general">
+                    <settings>
+                        <label/>
+                    </settings>
+                    <field name="context">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="component" xsi:type="string">ExpandingWeb_OpenAi/js/form/additional_information</item>
+                                <item name="formElement" xsi:type="string">input</item>
+                                <item name="label" translate="true" xsi:type="string">Context</item>
+                                <item name="notice" translate="true" xsi:type="string">Please add context so the AI can come up with the right content. For example: Write content for block contact</item>
+                                <item name="dataType" translate="true" xsi:type="string">text</item>
+                            </item>
+                        </argument>
+                    </field>
+                    <field name="content_from_ai">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="component" xsi:type="string">ExpandingWeb_OpenAi/js/form/textarea</item>
+                                <item name="formElement" xsi:type="string">textarea</item>
+                                <item name="rows" xsi:type="number">20</item>
+                                <item name="label" translate="true" xsi:type="string">Content</item>
+                                <item name="dataType" translate="true" xsi:type="string">text</item>
+                            </item>
+                        </argument>
+                    </field>
+                </fieldset>
+            </modal>
+        </fieldset>
+    </fieldset>
+</form>

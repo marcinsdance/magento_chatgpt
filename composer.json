@@ -1,0 +1,26 @@
+{
+    "name": "expanding-web/module-open-ai",
+    "description": "Use Open AI in Magento 2",
+    "type": "magento2-module",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "readme": "./README.md",
+    "config": {
+        "sort-packages": true
+    },
+    "version": "1.0.0",
+    "require": {
+        "php": "~7.4.0||~8.1.0",
+        "openai-php/client": "^0.3.0"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "ExpandingWeb\\OpenAi\\": ""
+        }
+    }
+}
